@@ -14,7 +14,7 @@ func init() {
 		Level:       zap.NewAtomicLevelAt(zap.InfoLevel),
 		Encoding:    "json",
 		//Saves the log in the defined file and prints in the console
-		OutputPaths: []string{"./logs/application.json","stdout"},
+		OutputPaths: []string{"/var/log/jr-management/","stdout"},
 		EncoderConfig: zapcore.EncoderConfig{
 			LevelKey:     "level",
 			TimeKey:      "time",
