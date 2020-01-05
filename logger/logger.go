@@ -11,10 +11,10 @@ var (
 
 func init() {
 	logConfig := zap.Config{
-		Level:       zap.NewAtomicLevelAt(zap.InfoLevel),
-		Encoding:    "json",
+		Level:    zap.NewAtomicLevelAt(zap.InfoLevel),
+		Encoding: "json",
 		//Saves the log in the defined file and prints in the console
-		OutputPaths: []string{"/var/log/jr-management/","stdout"},
+		OutputPaths: []string{"/var/log/jr-management/application.json", "stdout"},
 		EncoderConfig: zapcore.EncoderConfig{
 			LevelKey:     "level",
 			TimeKey:      "time",
@@ -25,21 +25,21 @@ func init() {
 		},
 	}
 	var err error
-	if log, err = logConfig.Build(); err != nil{
+	if log, err = logConfig.Build(); err != nil {
 		panic(err)
 	}
 }
 
-func GetLogger() *zap.Logger{
+func GetLogger() *zap.Logger {
 	return log
 }
 
-func Info(msg string, tags ...zap.Field){
+func Info(msg string, tags ...zap.Field) {
 	log.Info(msg, tags...)
 	log.Sync()
 }
 
-func Error(msg string, err error, tags ...zap.Field)  {
+func Error(msg string, err error, tags ...zap.Field) {
 
 	tags = append(tags, zap.NamedError("error", err))
 	log.Error(msg, tags...)
