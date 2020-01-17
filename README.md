@@ -1,2 +1,2 @@
-# bookstore_utils-go
+# utils-go
 Shared utils library.
